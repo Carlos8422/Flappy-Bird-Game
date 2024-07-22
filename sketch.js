@@ -84,6 +84,7 @@ function setup(){
 
 function draw(){
     
+    if(state==="game"){
     image(backgroundImage, 250, 400, 500, 800);  
     image(base, baseX, 750, 700, 100);
 
@@ -197,8 +198,37 @@ function draw(){
                 text(22);
                 textSize(50);
                 text("Game Over", 125, 400);
+                fill(255);
+                rect(250, 450, 100, 50);
+                textSize(20);
+                fill(0);
+                text("Try Again", 207, 455);
             }
         }
-
+    }
         drawnNumber++;
     }
+
+    function mouseClicked(){
+        if(mouseX>=200&&mouseX<=300&&mouseY>=425&&mouseY<=475&&state=="gameOver"){
+            tryAgain();
+        }
+    }
+    
+
+function tryAgain(){
+    score = 0;
+    birdXPos = 100;
+    birdYPos = 250;
+    pipes1_X = 200+500;
+    pipes2_X = 475+500;
+    pipes1TopRandomHeight = random(0,125);
+    pipes1BottomRandomHeight = random(550, 675);
+    pipes2TopRandomHeight = random(0,125);
+    pipes2BottomRandomHeight = random(550, 675);
+    baseX = 0;
+    birdAlive = true;
+    keyPressedNum = 0;
+    drawnNumber = 0;
+    state = "game";
+}
