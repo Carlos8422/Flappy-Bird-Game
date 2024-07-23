@@ -83,7 +83,7 @@ function setup(){
 }
 
 function draw(){
-    
+    state = "game"
     if(state==="game"){
     image(backgroundImage, 250, 400, 500, 800);  
     image(base, baseX, 750, 700, 100);
@@ -173,6 +173,13 @@ function draw(){
     topPipe2Top = pipeTop2_Y - 150;
     topPipe2Bottom = pipeTop2_Y + 150;
 
+    console.log(`Bird: Left=${myLeft}, Right=${myRight}, Top=${myTop}, Bottom=${myBottom}`);
+        console.log(`Pipe1 Bottom: Left=${bottomPipe1Left}, Right=${bottomPipe1Right}, Top=${bottomPipe1Top}, Bottom=${bottomPipe1Bottom}`);
+        console.log(`Pipe1 Top: Left=${topPipe1Left}, Right=${topPipe1Right}, Top=${topPipe1Top}, Bottom=${topPipe1Bottom}`);
+        console.log(`Pipe2 Bottom: Left=${bottomPipe2Left}, Right=${bottomPipe2Right}, Top=${bottomPipe2Top}, Bottom=${bottomPipe2Bottom}`);
+        console.log(`Pipe2 Top: Left=${topPipe2Left}, Right=${topPipe2Right}, Top=${topPipe2Top}, Bottom=${topPipe2Bottom}`);
+
+
 
     //code based of off collision theory lesson and state lesson
     if(((myRight > bottomPipe1Left && myLeft < bottomPipe1Right && myBottom > bottomPipe1Top && myTop < bottomPipe1Bottom ||
@@ -210,7 +217,7 @@ function draw(){
     }
 
     function mouseClicked(){
-        if(mouseX>=200&&mouseX<=300&&mouseY>=425&&mouseY<=475&&state=="gameOver"){
+        if(mouseX>=200 && mouseX<=300 && mouseY>=425 && mouseY<=475 && state=="gameOver"){
             tryAgain();
         }
     }
@@ -222,10 +229,6 @@ function tryAgain(){
     birdYPos = 250;
     pipes1_X = 200+500;
     pipes2_X = 475+500;
-    pipes1TopRandomHeight = random(0,125);
-    pipes1BottomRandomHeight = random(550, 675);
-    pipes2TopRandomHeight = random(0,125);
-    pipes2BottomRandomHeight = random(550, 675);
     baseX = 0;
     birdAlive = true;
     keyPressedNum = 0;
